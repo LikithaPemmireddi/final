@@ -1,0 +1,28 @@
+spring:
+  cloud:
+   gateway:
+     routes:
+       
+      #Route Mapping
+       - id: Student                    #Route Identifier
+         uri: http://localhost:8081/              #Respective microservice URL which needs to be mapped
+         predicates:                              #Request Context Path Mapping
+         - Path=/entities/**
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/student
+    username: root
+    password: PHW#84#jeor
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8084
+
